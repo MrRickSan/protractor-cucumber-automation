@@ -1,4 +1,4 @@
-//Chai BDD / TDD assertion library
+//Chai ia a BDD / TDD assertion library
 var chai = require('chai'),
   chaiAsPromised = require('chai-as-promised'),
   expect = chai.expect;
