@@ -1,1 +1,5 @@
+!.gitkeep
 node_modules
+node_modules/
+tmp
+npm-debug.log

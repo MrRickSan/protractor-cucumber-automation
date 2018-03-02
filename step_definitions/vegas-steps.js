@@ -11,15 +11,18 @@ var VegasPage = require("../pages/vegas-page.js"),
 var VegasSteps = function () {
 
     this.Given(/^I am on the William Hill Vegas page$/, function (callback) {
-        page
-          .get()
-          .then(callback);
+        page.get();
+        callback();
+      });
+
+      this.When(/^The search magnifier button is visible$/, function (callback) {
+        expect(page.searchButtonIsDisplayed()).to.be.true;
+        callback();
       });
 
     this.When(/^I click on search magnifier button$/, function (callback) {
-        page
-            .clickSearchButton()
-            .then(callback);
+        page.clickSearchButton();
+        callback();
       });
 
 };
