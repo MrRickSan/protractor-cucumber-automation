@@ -5,25 +5,29 @@ var chai = require('chai'),
 
 chai.use(chaiAsPromised);
 
-var VegasPage = require("../pages/vegas-page.js"),
-  page = new VegasPage();
+var VegasPage = require("../page_objects/vegas-page.js"),
+  vegasPage = new VegasPage();
 
 var VegasSteps = function () {
+  "use strict";
 
-    this.Given(/^I am on the William Hill Vegas page$/, function (callback) {
-        page.get();
-        callback();
-      });
+  this.Given(/^I am on the William Hill Vegas page$/, function (callback) {
+    browser.wait(browser.driver.manage().deleteAllCookies());
+    browser.ignoreSynchronization = true;
+    vegasPage.get();
+    callback();
+  });
 
-      this.When(/^The search magnifier button is visible$/, function (callback) {
-        expect(page.searchButtonIsDisplayed()).to.be.true;
-        callback();
-      });
+  this.When(/^The search magnifier button is visible$/, function (callback) {
+    expect(vegasPage.searchButtonIsDisplayed()).to.eventually.equal(true);
+    callback();   
+  });
 
-    this.When(/^I click on search magnifier button$/, function (callback) {
-        page.clickSearchButton();
-        callback();
-      });
+  this.When(/^I click on search magnifier button$/, function (callback) {
+    vegasPage.clickSearchButton();
+    expect(vegasPage.searchInputIsDisplayed()).to.eventually.equal(true);
+    callback();
+  });
 
 };
 

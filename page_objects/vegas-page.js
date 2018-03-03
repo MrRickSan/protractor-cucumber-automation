@@ -3,9 +3,11 @@ var VegasPage = function() {
 
     this.selectors = {
         'searchButton': '.btn-search-magnifier',
+        'searchInput': '//div[contains(@class, "search-input__input-wrapper")]/input',
       };
     
-      this.searchButton = browser.$(this.selectors.searchButton);
+      this.searchButton = browser.element.all(by.css(this.selectors.searchButton)).get(0);
+      this.searchInput = browser.element(by.xpath(this.selectors.searchInput));
 
   };
 
@@ -21,6 +23,10 @@ VegasPage.prototype.clickSearchButton = function() {
 
 VegasPage.prototype.searchButtonIsDisplayed = function() {
     return this.searchButton.isDisplayed();
+}
+
+VegasPage.prototype.searchInputIsDisplayed = function() {
+    return this.searchInput.isDisplayed();
 }
 
 
