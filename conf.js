@@ -2,8 +2,9 @@
 Basic configuration to run your cucumber
 feature files and step definitions with protractor.
 **/
-
-// var reporter = require('cucumber-html-reporter');
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 exports.config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
@@ -27,7 +28,6 @@ exports.config = {
     
     directConnect: true,
 
-    //resultJsonOutputFile: 'report.json',
     resultJsonOutputFile: './reports/json/cucumber_report.json',
 
     framework: 'custom',
@@ -36,7 +36,7 @@ exports.config = {
     //cucumber command line options
     cucumberOpts: {
       strict: true,
-      require: ["./step_definitions/*.js"],
+      require: ['./step_definitions/*.js', './support/*.js'],
       format: "pretty",
       tags: '@search'
       
@@ -45,25 +45,10 @@ exports.config = {
       specs: ['./features/*.feature'],
 
     onPrepare: () => {
+      browser.driver.manage().deleteAllCookies();
       browser.manage().window().maximize(); // maximize the browser before executing the feature files
-    
-      // var options = {
-      //     theme: 'bootstrap',
-      //     jsonFile: 'report.json',
-      //     output: 'cucumber_report.html',
-      //     reportSuiteAsScenarios: true,
-      //     launchReport: true,
-      //     metadata: {
-      //         "App Version":"0.3.2",
-      //         "Test Environment": "STAGING",
-      //         "Browser": "Chrome  54.0.2840.98",
-      //         "Platform": "Windows 10",
-      //         "Parallel": "Scenarios",
-      //         "Executed": "Remote"
-      //     }
-      //   };
-      
-      //   reporter.generate(options);
-    
+      browser.ignoreSynchronization = true;
+      global.expect = chai.expect;
+         
     }
   }

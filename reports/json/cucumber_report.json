@@ -1,0 +1,17 @@
+[
+  {
+    "description": "Search for Mayfair Roulette and login to the game",
+    "assertions": [
+      {
+        "passed": true
+      },
+      {
+        "passed": true
+      },
+      {
+        "passed": true
+      }
+    ],
+    "duration": 3376332
+  }
+]

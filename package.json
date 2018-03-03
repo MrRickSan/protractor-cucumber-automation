@@ -25,8 +25,8 @@
     "url": "git+https://github.com/MrRickSan/protractor-cucumber-automation.git"
   },
   "keywords": [],
-  "author": "Ricardo Santos de Oliveira",
-  "license": "ISC",
+  "author": "Ricardo Oliveira <ricardooliveira.info@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MrRickSan/protractor-cucumber-automation/issues"
   },
