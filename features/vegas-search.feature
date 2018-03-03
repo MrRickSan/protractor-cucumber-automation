@@ -3,6 +3,7 @@ Feature: Search for a specific game
 
   Scenario: Search for Mayfair Roulette and login to the game
     Given I am on the William Hill Vegas page
+    When The search magnifier button is visible
     # When I click on search magnifier button
     # And I search for "Mayfair Roulette" game
     # Then The "Mayfair Roulette" is displayed in the results

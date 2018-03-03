@@ -9,14 +9,18 @@ var VegasPage = function() {
 
   };
 
-//get url
+
 VegasPage.prototype.get = function() {
-    return browser.get('https://vegas.williamhill.com/');
+    browser.get('https://vegas.williamhill.com/');
 };  
 
-//click search button
+
 VegasPage.prototype.clickSearchButton = function() {
     return this.searchButton.click();
+}
+
+VegasPage.prototype.searchButtonIsDisplayed = function() {
+    return this.searchButton.isDisplayed();
 }
 
 
