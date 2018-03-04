@@ -1,1 +1,1 @@
-### Here created the json reports
+### The json report is generated automatically in this folder

@@ -1,1 +1,1 @@
-### Here created the html reports
+### The html reports are generated automatically in this folder

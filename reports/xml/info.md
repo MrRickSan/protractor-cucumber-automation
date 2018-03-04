@@ -1,1 +1,1 @@
-### Here created the xml reports
+### The xml reports are generated automatically in this folder
