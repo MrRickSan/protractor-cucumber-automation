@@ -18,7 +18,7 @@
   "scripts": {
     "prestart-webdriver": "webdriver-manager update",
     "start-webdriver": "webdriver-manager start",
-    "protractor": "protractor protractor.conf.js"
+    "protractor": "protractor conf.js"
   },
   "repository": {
     "type": "git",

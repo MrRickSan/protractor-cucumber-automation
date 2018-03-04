@@ -1,7 +1,6 @@
 /*jslint node: true*/
 var Cucumber = require('cucumber');
 var fs = require('fs');
-var conf = require('../conf').config;
 var reporter = require('cucumber-html-reporter');
 var report = require('cucumber-html-report');
 
@@ -10,10 +9,6 @@ var hooks = function () {
     var jsonReports = process.cwd() + '/reports/json';
     var htmlReports = process.cwd() + '/reports/html';
     var targetJson = jsonReports + '/cucumber_report.json';
-
-    // this.registerHandler('BeforeFeature', { timeout: 10 * 1000 }, function (event) {
-    //     return browser.get(conf.baseUrl);
-    // });
 
     this.After('Successfully Applied Hooks', function (scenario, callback) {
         if (scenario.isFailed()) {

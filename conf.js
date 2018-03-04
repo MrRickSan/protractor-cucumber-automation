@@ -25,8 +25,6 @@ exports.config = {
         // }
       }
     },
-    
-    directConnect: true,
 
     resultJsonOutputFile: './reports/json/cucumber_report.json',
 
@@ -38,8 +36,7 @@ exports.config = {
       strict: true,
       require: ['./step_definitions/*.js', './support/*.js'],
       format: "pretty",
-      tags: '@search'
-      
+      //tags: '@search'
       },
 
       specs: ['./features/*.feature'],
