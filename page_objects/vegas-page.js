@@ -10,8 +10,8 @@ var VegasPage = function(){
         .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div')).get(0)
         .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div/div/div[3]/div/button[2]'));
     
-    this.playButton = element.all(by.id('root'))
-        .all(by.xpath('/div/div[3]/section/div[2]/div/div[1]/div[2]/button[1]'));
+    this.playButton = element(by.buttonText('Play Now'));
+    this.gameTitle = element(by.css('h2.tile-details__title'));
 };
 
 VegasPage.prototype.get = function() {
@@ -51,8 +51,14 @@ VegasPage.prototype.clickMoreButton = function() {
     return
 }
 
+VegasPage.prototype.getGameTitle = function() {
+    return this.gameTitle.getText();
+}
+
 VegasPage.prototype.clickPlayButton = function() {
-    return this.playButton.click();
+    this.playButton.click();
+    browser.sleep(3000);
+    return
 }
 
 module.exports = VegasPage;

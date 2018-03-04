@@ -1,11 +1,13 @@
 //Chai is used here as BDD / TDD assertion library
 
 var VegasPage = require("../page_objects/vegas-page.js");
+var VegasLoginPage = require("../page_objects/vegas-login-page.js");
   
 var VegasSteps = function () {
   "use strict";
 
   var vegasPage = new VegasPage();
+  var vegasLoginPage = new VegasLoginPage();
 
   this.setDefaultTimeout(80 * 1000);
 
@@ -13,11 +15,11 @@ var VegasSteps = function () {
     return vegasPage.get();
   });
 
-  this.When(/^The search magnifier button is visible$/, function () {
+  this.Then(/^The search magnifier button is visible$/, function () {
     return expect(vegasPage.searchButtonIsDisplayed()).to.eventually.equal(true);
   });
 
-  this.Then(/^I click on search magnifier button$/, function () {
+  this.When(/^I click on search magnifier button$/, function () {
     return vegasPage.clickSearchButton();
   });
 
@@ -29,16 +31,54 @@ var VegasSteps = function () {
     return vegasPage.clickInputSearch();
   });
 
-  this.Then(/^I search for "([^"]*)" game$/, function (gameName) {
-    return vegasPage.inputSearch(gameName);
+  this.Then(/^I search for "([^"]*)" game$/, function (arg1) {
+    return vegasPage.inputSearch(arg1);
   });
 
   this.Then(/^I will houver over the game card$/, function () {
     return vegasPage.mouseHoverFirstResult();
   });
 
-  this.Then(/^I will click on more button$/, function () {
+  this.Then(/^I click on More button$/, function () {
     return vegasPage.clickMoreButton();
+  });
+
+  this.Then(/^I will check if the game name "([^"]*)" is correctly displayed$/, function (arg1) {
+    return expect(vegasPage.getGameTitle()).to.eventually.equal(arg1);
+    // return vegasPage.getGameTitle();
+  });
+
+  this.Then(/^I click on Play Now button$/, function () {
+    return vegasPage.clickPlayButton();
+  });
+
+  this.Then(/^I will validate full Login Window displayed$/, function () {
+    expect(vegasLoginPage.registerLabelDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.joinNowBtnDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.logoDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.usrLabelDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.pwLabelDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.usrInputFieldDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.pwInputFieldDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.togglePwDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.forgotLinkDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.loginBtnDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.rememberLabelDisplayed()).to.eventually.equal(true);
+    expect(vegasLoginPage.rememberCheckboxDisplayed()).to.eventually.equal(true);
+    vegasLoginPage.clickPwInputField();
+    expect(vegasLoginPage.usrNameNeededDisplayed()).to.eventually.equal(true);
+    vegasLoginPage.clickUsrInputField();
+    expect(vegasLoginPage.pwNeededDisplayed()).to.eventually.equal(true);
+    vegasLoginPage.writeOnUsrInputField('12345');
+    vegasLoginPage.clickPwInputField();
+    expect(vegasLoginPage.usrNameErrorDisplayed()).to.eventually.equal(true);
+    vegasLoginPage.writeOnPwInputField('12345');
+    vegasLoginPage.clickUsrInputField();
+    expect(vegasLoginPage.pwErrorDisplayed()).to.eventually.equal(true);
+    vegasLoginPage.writeOnUsrInputField('123456');
+    vegasLoginPage.writeOnPwInputField('123456');
+    vegasLoginPage.clickLoginBtn();
+    return
   });
 
 };
