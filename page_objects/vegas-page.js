@@ -8,10 +8,10 @@ var VegasPage = function(){
     
     this.moreButton = element.all(by.id('root'))
         .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div')).get(0)
-        .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div/div'))
-        .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div/div/div[3]'))
-        .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div/div/div[3]/div')) //quando botei esse funcionou..investigar.
         .all(by.xpath('//div/div[3]/section/div/div/div[1]/div/div/div/div[3]/div/button[2]'));
+    
+    this.playButton = element.all(by.id('root'))
+        .all(by.xpath('/div/div[3]/section/div[2]/div/div[1]/div[2]/button[1]'));
 };
 
 VegasPage.prototype.get = function() {
@@ -41,12 +41,18 @@ VegasPage.prototype.inputSearch = function(input) {
 VegasPage.prototype.mouseHoverFirstResult = function() {
     browser.sleep(2000);
     browser.actions().mouseMove(this.firstResult).mouseMove({x: 50, y: 0}).perform();
-    browser.sleep(3000);
+    browser.sleep(2000);
     return
 }
 
 VegasPage.prototype.clickMoreButton = function() {
-    return this.moreButton.click();
+    this.moreButton.click();
+    browser.sleep(2000);
+    return
+}
+
+VegasPage.prototype.clickPlayButton = function() {
+    return this.playButton.click();
 }
 
 module.exports = VegasPage;
