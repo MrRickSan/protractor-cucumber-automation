@@ -1,5 +1,5 @@
 # protractor-cucumber-automation
-This test executes a search for a specific game on the Willian Hill Vegas application "https://vegas.williamhill.com/"
+This test executes a search for a specific game on the Willian Hill Vegas web application "https://vegas.williamhill.com/" using a protractor-cucumber framework
 
 ## Getting Started
 
@@ -22,11 +22,20 @@ npm install
 npm run start-webdriver
 ```
 
-
-### Run Protractor (in another terminal window)
+### Run Protractor in Desktop mode (in another terminal window)
 
 ```
-npm run protractor
+npm run desktop -- --cucumberOpts.tags='@desktop' --disableChecks
 ```
 
+### Run Protractor in Mobile mode
 
+```
+npm run mobile -- --cucumberOpts.tags='@mobile' --disableChecks
+```
+
+### The reports are being be created inside reports folder after execution
+
+```
+/*/reports/
+```

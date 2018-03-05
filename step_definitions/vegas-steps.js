@@ -1,15 +1,20 @@
 //Chai is used here as BDD / TDD assertion library
 
+//Here I require the Page Objects
 var VegasPage = require("../page_objects/vegas-page.js");
 var VegasLoginPage = require("../page_objects/vegas-login-page.js");
-  
+
+//Here is where the steps of the *.feature are executed
 var VegasSteps = function () {
   "use strict";
 
+  //variables created as an object of type Page Objects
   var vegasPage = new VegasPage();
   var vegasLoginPage = new VegasLoginPage();
 
-  this.setDefaultTimeout(80 * 1000);
+  //The default timeout is too low, so I was getting error of function timed out
+  //The solution was to set a increased default timeout
+  this.setDefaultTimeout(100 * 1000);
 
   this.Given(/^I am on the William Hill Vegas page$/, function () {
     return vegasPage.get();
@@ -39,13 +44,20 @@ var VegasSteps = function () {
     return vegasPage.mouseHoverFirstResult();
   });
 
+  this.Then(/^I will click on the game card$/, function () {
+    return vegasPage.clickFirstResult();
+  });
+
   this.Then(/^I click on More button$/, function () {
     return vegasPage.clickMoreButton();
   });
 
   this.Then(/^I will check if the game name "([^"]*)" is correctly displayed$/, function (arg1) {
     return expect(vegasPage.getGameTitle()).to.eventually.equal(arg1);
-    // return vegasPage.getGameTitle();
+  });
+
+  this.Then(/^I will check if the game name "([^"]*)" is correctly displayed on mobile$/, function (arg1) {
+    return expect(vegasPage.getMobileGameTitle()).to.eventually.equal(arg1);
   });
 
   this.Then(/^I click on Play Now button$/, function () {
@@ -53,32 +65,34 @@ var VegasSteps = function () {
   });
 
   this.Then(/^I will validate full Login Window displayed$/, function () {
-    expect(vegasLoginPage.registerLabelDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.joinNowBtnDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.logoDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.usrLabelDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.pwLabelDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.usrInputFieldDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.pwInputFieldDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.togglePwDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.forgotLinkDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.loginBtnDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.rememberLabelDisplayed()).to.eventually.equal(true);
-    expect(vegasLoginPage.rememberCheckboxDisplayed()).to.eventually.equal(true);
-    vegasLoginPage.clickPwInputField();
-    expect(vegasLoginPage.usrNameNeededDisplayed()).to.eventually.equal(true);
-    vegasLoginPage.clickUsrInputField();
-    expect(vegasLoginPage.pwNeededDisplayed()).to.eventually.equal(true);
-    vegasLoginPage.writeOnUsrInputField('12345');
-    vegasLoginPage.clickPwInputField();
-    expect(vegasLoginPage.usrNameErrorDisplayed()).to.eventually.equal(true);
-    vegasLoginPage.writeOnPwInputField('12345');
-    vegasLoginPage.clickUsrInputField();
-    expect(vegasLoginPage.pwErrorDisplayed()).to.eventually.equal(true);
-    vegasLoginPage.writeOnUsrInputField('123456');
-    vegasLoginPage.writeOnPwInputField('123456');
-    vegasLoginPage.clickLoginBtn();
-    return
+    return browser.sleep(1000).then(function() {
+      expect(vegasLoginPage.registerLabelDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.joinNowBtnDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.logoDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.usrLabelDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.pwLabelDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.usrInputFieldDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.pwInputFieldDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.togglePwDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.forgotLinkDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.loginBtnDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.rememberLabelDisplayed()).to.eventually.equal(true);
+      expect(vegasLoginPage.rememberCheckboxDisplayed()).to.eventually.equal(true);
+      vegasLoginPage.clickPwInputField();
+      expect(vegasLoginPage.usrNameNeededDisplayed()).to.eventually.equal(true);
+      vegasLoginPage.clickUsrInputField();
+      expect(vegasLoginPage.pwNeededDisplayed()).to.eventually.equal(true);
+      vegasLoginPage.writeOnUsrInputField('12345');
+      vegasLoginPage.clickPwInputField();
+      expect(vegasLoginPage.usrNameErrorDisplayed()).to.eventually.equal(true);
+      vegasLoginPage.writeOnPwInputField('12345');
+      vegasLoginPage.clickUsrInputField();
+      expect(vegasLoginPage.pwErrorDisplayed()).to.eventually.equal(true);
+      vegasLoginPage.writeOnUsrInputField('123456');
+      vegasLoginPage.writeOnPwInputField('123456');
+      vegasLoginPage.clickLoginBtn();
+    });
+    
   });
 
 };
