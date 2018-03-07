@@ -1,4 +1,6 @@
-var VegasLoginPage = function(){
+/*jslint browser: true*/
+/*global element,by,browser, module*/
+var VegasLoginPage = function () {
     "use strict";
 
     this.registerLabel = element(by.css('span.c-login-form__register-text'));
@@ -13,101 +15,101 @@ var VegasLoginPage = function(){
     this.loginBtn = element(by.buttonText('Log in'));
     this.rememberLabel = element(by.cssContainingText('label.c-login-form__checkboxes-label', 'Save username'));
     this.rememberCheckbox = element(by.id('rememberUsername'));
-    this.usrNameNeeded= element(by.cssContainingText('p.c-login-form__input-group-error', 'Username is needed'));
+    this.usrNameNeeded = element(by.cssContainingText('p.c-login-form__input-group-error', 'Username is needed'));
     this.pwNeeded = element(by.cssContainingText('p.c-login-form__input-group-error', 'Password is needed'));
     this.usrNameError = element(by.cssContainingText('p.c-login-form__input-group-error', 'Username must be at least 6 characters'));
     this.pwError = element(by.cssContainingText('p.c-login-form__input-group-error', 'Password must be at least 6 characters'));
 };
 
-VegasLoginPage.prototype.registerLabelDisplayed = function() {
+VegasLoginPage.prototype.registerLabelDisplayed = function () {
     return this.registerLabel.isDisplayed();
 }
 
-VegasLoginPage.prototype.joinNowBtnDisplayed = function() {
+VegasLoginPage.prototype.joinNowBtnDisplayed = function () {
     return this.joinNowBtn.isDisplayed();
 }
 
-VegasLoginPage.prototype.logoDisplayed = function() {
+VegasLoginPage.prototype.logoDisplayed = function () {
     return this.logo.isDisplayed();
 }
 
-VegasLoginPage.prototype.usrLabelDisplayed = function() {
+VegasLoginPage.prototype.usrLabelDisplayed = function () {
     return this.usrLabel.isDisplayed();
 }
 
-VegasLoginPage.prototype.pwLabelDisplayed = function() {
+VegasLoginPage.prototype.pwLabelDisplayed = function () {
     return this.pwLabel.isDisplayed();
 }
 
-VegasLoginPage.prototype.usrInputFieldDisplayed = function() {
+VegasLoginPage.prototype.usrInputFieldDisplayed = function () {
     return this.usrInputField.isDisplayed();
 }
 
-VegasLoginPage.prototype.pwInputFieldDisplayed = function() {
+VegasLoginPage.prototype.pwInputFieldDisplayed = function () {
     return this.pwInputField.isDisplayed();
 }
 
-VegasLoginPage.prototype.togglePwDisplayed = function() {
+VegasLoginPage.prototype.togglePwDisplayed = function () {
     return this.togglePw.isDisplayed();
 }
 
-VegasLoginPage.prototype.forgotLinkDisplayed = function() {
+VegasLoginPage.prototype.forgotLinkDisplayed = function () {
     return this.forgotLink.isDisplayed();
 }
 
-VegasLoginPage.prototype.loginBtnDisplayed = function() {
+VegasLoginPage.prototype.loginBtnDisplayed = function () {
     return this.loginBtn.isDisplayed();
 }
 
-VegasLoginPage.prototype.rememberLabelDisplayed = function() {
+VegasLoginPage.prototype.rememberLabelDisplayed = function () {
     return this.rememberLabel.isDisplayed();
 }
 
-VegasLoginPage.prototype.rememberCheckboxDisplayed = function() {
+VegasLoginPage.prototype.rememberCheckboxDisplayed = function () {
     return this.rememberCheckbox.isDisplayed();
 }
 
-VegasLoginPage.prototype.clickPwInputField = function() {
+VegasLoginPage.prototype.clickPwInputField = function () {
     return this.pwInputField.click();
 }
 
-VegasLoginPage.prototype.usrNameNeededDisplayed = function() {
+VegasLoginPage.prototype.usrNameNeededDisplayed = function () {
     return this.usrNameNeeded.isDisplayed();
 }
 
-VegasLoginPage.prototype.clickUsrInputField = function() {
+VegasLoginPage.prototype.clickUsrInputField = function () {
     return this.usrInputField.click();
 }
 
-VegasLoginPage.prototype.pwNeededDisplayed = function() {
+VegasLoginPage.prototype.pwNeededDisplayed = function () {
     return this.pwNeeded.isDisplayed();
 }
 
-VegasLoginPage.prototype.writeOnUsrInputField = function(arg1) {
+VegasLoginPage.prototype.writeOnUsrInputField = function (arg1) {
     return this.usrInputField.sendKeys(arg1);
 }
 
-VegasLoginPage.prototype.usrNameErrorDisplayed = function() {
+VegasLoginPage.prototype.usrNameErrorDisplayed = function () {
     return this.usrNameError.isDisplayed();
 }
 
-VegasLoginPage.prototype.writeOnPwInputField = function(arg1) {
+VegasLoginPage.prototype.writeOnPwInputField = function (arg1) {
     return this.pwInputField.sendKeys(arg1);
 }
 
-VegasLoginPage.prototype.pwErrorDisplayed = function() {
+VegasLoginPage.prototype.pwErrorDisplayed = function () {
     return this.pwError.isDisplayed();
 }
 
-VegasLoginPage.prototype.clickLoginBtn = function() {
+VegasLoginPage.prototype.clickLoginBtn = function () {
     return this.loginBtn.click();
 }
 
-VegasLoginPage.prototype.failToLoginMsgTitleDisplayed = function() {
+VegasLoginPage.prototype.failToLoginMsgTitleDisplayed = function () {
     return this.failToLoginMsgTitle.isDisplayed();
 }
 
-VegasLoginPage.prototype.failToLoginMsgTextDisplayed = function() {
+VegasLoginPage.prototype.failToLoginMsgTextDisplayed = function () {
     return this.failToLoginMsgText.isDisplayed();
 }
 
