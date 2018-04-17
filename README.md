@@ -25,13 +25,13 @@ npm run start-webdriver
 ### Run Protractor in Desktop mode (in another terminal window)
 
 ```
-npm run desktop -- --cucumberOpts.tags='@desktop' --disableChecks
+npm run desktop
 ```
 
 ### Run Protractor in Mobile mode
 
 ```
-npm run mobile -- --cucumberOpts.tags='@mobile' --disableChecks
+npm run mobile
 ```
 
 ### The reports are being be created inside reports folder after execution

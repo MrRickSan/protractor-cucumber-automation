@@ -37,7 +37,7 @@ exports.config = {
         strict: true,
         require: ['./step_definitions/*.js', './support/*.js'],
         format: "pretty",
-        tags: ['@desktop', '@mobile']//Tags are used for identify the test scenario
+        tags: ['@mobile']//Tags are used for identify the test scenario
     },
 
     specs: ['./features/*.feature'],
