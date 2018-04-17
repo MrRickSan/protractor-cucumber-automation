@@ -32,7 +32,7 @@ exports.config = {
     //cucumber command line options
     cucumberOpts: {
         strict: true,
-        require: ['./step_definitions/*.js', './support/*.js'],
+        require: ['./features/step_definitions/*.js', './support/*.js'],
         format: "pretty",
         tags: ['@desktop'] //Tags are used for identify the test scenario
     },
